@@ -1,8 +1,8 @@
-from clinica import Clinica
-from paciente import Paciente
-from profissional import Profissional
-from tipoAtendimento import TipoAtendimento
-from atendimento import Atendimento
+from model_m.clinica import Clinica
+from model_m.paciente import Paciente
+from model_m.profissional import Profissional
+from model_m.tipoAtendimento import TipoAtendimento
+from model_m.atendimento import Atendimento
 
 raul=Paciente("raul","(48) 988587817", "103.829.772.79", 2008, 3, 15)
 tiago=Paciente("tiago","(55) 942587217", "206.999.772.79", 2000, 9, 22)
