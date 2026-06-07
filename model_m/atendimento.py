@@ -4,7 +4,7 @@ from paciente import Paciente
 from profissional import Profissional
 from tipoAtendimento import TipoAtendimento
 from procedimento import Procedimento
-from pagamento import PagamentoCartao, PagamentoDinheiro, PagamentoPix
+from pagamento import Pagamento, PagamentoCartao, PagamentoDinheiro, PagamentoPix
 
 
 class Atendimento:
@@ -29,22 +29,25 @@ class Atendimento:
     def data(self):
         return self.__data
     @data.setter
-    def data(self,ano,mes,dia):
-        self.__data=date(ano,mes,dia)
+    def data(self, data: date):
+        if isinstance(data, date):
+            self.__data = data
     
     @property
     def horario_inicio(self):
         return self.__horario_inicio
     @horario_inicio.setter
-    def horario_inicio(self, hora, minuto):
-        self.__horario_inicio=time(hora,minuto)
+    def horario_inicio(self, horario_inicio: time):
+        if isinstance(horario_inicio, time):
+            self.__horario_inicio = horario_inicio
     
     @property
     def horario_fim(self):
         return self.__horario_fim
     @horario_fim.setter
-    def horario_fim(self, hora, minuto):
-        self.__horario_fim=time(hora,minuto)
+    def horario_fim(self, horario_fim: time):
+        if isinstance(horario_fim, time):
+            self.__horario_fim = horario_fim
 
     @property
     def valor(self):
@@ -88,24 +91,9 @@ class Atendimento:
     @property
     def pagamentos(self):
         return self.__pagamentos
-    def adicionar_pagamento(self, valor_pag_pix:float, cpf_pag_pix:str,
-                            numero_cartao:str, bandeira:str):
-        cntrl=0
-        while cntrl==0:
-            opcao_usuario=input('digitar opção de pagamento: 1=Pix, 2=Dinheiro, 3=Cartão. Digitar:')
-            match opcao_usuario:
-                case "1":
-                    pagamento = PagamentoPix(self.__data, self.__paciente, valor_pag_pix, cpf_pag_pix)
-                    cntrl+=1
-                case '2':
-                    pagamento = PagamentoDinheiro(self.__data, self.__paciente, valor_pag_pix)
-                    cntrl+=1
-                case "3":
-                    pagamento = PagamentoCartao(self.__data, self.__paciente, valor_pag_pix,numero_cartao,bandeira)
-                    cntrl+=1
-                case _:
-                    print('Opção inválida')
-        self.__pagamentos.append(pagamento)
+    def adicionar_pagamento(self, pagamento: Pagamento):
+        if isinstance(pagamento, Pagamento):
+            self.__pagamentos.append(pagamento)
     def remover_pagamento(self):
         ultimo=len(self.pagamentos)
         self.__pagamentos.pop(ultimo-1)
@@ -138,10 +126,4 @@ class Atendimento:
         for x in range(len(self.__pagamentos)):
             valor_restante-=self.__pagamentos[x].valor
         return valor_restante
-
-    #controlador
-    def verificar_idade(self):
-        dezoito=self.data.year-18
-        data_permitida=date(dezoito,self.data.month,self.data.day)
-        if self.paciente.nascimento>data_permitida:
-            print('block')
+

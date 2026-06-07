@@ -35,12 +35,14 @@ class Clinica:
     def horario_inicial(self):
         return self.__horario_inicial
     @horario_inicial.setter
-    def horario_inicial(self, hora, minuto):
-        self.__horario_inicial=time(hora,minuto)
+    def horario_inicial(self, horario_inicial: time):
+        if isinstance(horario_inicial, time):
+            self.__horario_inicial = horario_inicial
     
     @property
     def horario_fim(self):
         return self.__horario_fim
     @horario_fim.setter
-    def horario_fim(self, hora, minuto):
-        self.__horario_fim=time(hora,minuto)
+    def horario_fim(self, horario_fim: time):
+        if isinstance(horario_fim, time):
+            self.__horario_fim = horario_fim

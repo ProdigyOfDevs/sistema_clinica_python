@@ -10,5 +10,6 @@ class Paciente(Pessoa):
     def nascimento(self):
         return self.__nascimento
     @nascimento.setter
-    def nascimento(self, ano_nascimento:int, mes_nascimento:int, dia_nascimento:int):
-        self.__nascimento = datetime.date(ano_nascimento,mes_nascimento,dia_nascimento)
+    def nascimento(self, nascimento: datetime.date):
+        if isinstance(nascimento, datetime.date):
+            self.__nascimento = nascimento

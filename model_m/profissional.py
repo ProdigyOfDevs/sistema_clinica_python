@@ -9,6 +9,7 @@ class Profissional(Pessoa):
     @property
     def especialidade(self):
         return self.__especialidade
+    @especialidade.setter
     def especialidade(self, especialidade:str):
         self.__especialidade = especialidade
 
