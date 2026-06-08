@@ -1,4 +1,4 @@
-from pessoa import Pessoa
+from model_m.pessoa import Pessoa
 import datetime
 
 class Paciente(Pessoa):

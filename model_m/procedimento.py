@@ -1,4 +1,4 @@
-from profissional import Profissional
+from model_m.profissional import Profissional
 
 class Procedimento:
     def __init__(self, descricao:str, custo:float, profissional_responsavel:Profissional):

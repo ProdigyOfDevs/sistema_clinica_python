@@ -1,10 +1,10 @@
 from datetime import date, time
-from clinica import Clinica
-from paciente import Paciente
-from profissional import Profissional
-from tipoAtendimento import TipoAtendimento
-from procedimento import Procedimento
-from pagamento import Pagamento, PagamentoCartao, PagamentoDinheiro, PagamentoPix
+from model_m.clinica import Clinica
+from model_m.paciente import Paciente
+from model_m.profissional import Profissional
+from model_m.tipoAtendimento import TipoAtendimento
+from model_m.procedimento import Procedimento
+from model_m.pagamento import Pagamento, PagamentoCartao, PagamentoDinheiro, PagamentoPix
 
 
 class Atendimento:

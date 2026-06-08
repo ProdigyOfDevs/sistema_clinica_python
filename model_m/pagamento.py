@@ -1,5 +1,5 @@
 from abc import ABC
-from paciente import Paciente
+from model_m.paciente import Paciente
 from datetime import date
 
 class Pagamento(ABC):
